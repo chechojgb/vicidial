@@ -29,7 +29,9 @@ class AdminLoginController extends Controller
         // Verificar si el usuario existe y la contraseña coincide
         if ($user && $request->password === $user->pass) {
             session(['admin_user' => $user->user]);
-            return redirect()->route('dashboard')->with('success', 'Login exitoso');
+        
+            // Redirigir al componente Livewire principal del Dashboard
+            return view('admin.admin');
         }
 
         // Si falla
